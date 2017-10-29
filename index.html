@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Employee Tracker</title>
+	<title>Train Tracker</title>
 </head>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,23 +10,22 @@
 
 	<div class="container">
 		<div class="jumbotron text-center">
-			<h1><strong> Employee Data Management</strong></h1>
-			<h3><strong> A Comprehensive Directory of Employee Billable Hours</strong></h3>
+			<h1><strong> Train Tracker</strong></h1>
+			<h3><strong> Add trains and track them based on their next arrival.</strong></h3>
 		</div>
 
 		<div class="panel panel-primary">
-			<div class="panel-heading">Current Employees</div>
+			<div class="panel-heading">Current Trains</div>
 			<div class="panel-body">
 				<div class="table">
-					<table class="table" id="employee-table">
+					<table class="table" id="train-table">
 						<thead>
 							<tr>
-								<th>Employee Name</th>
-								<th>Role</th>
-								<th>Start Date</th>
-								<th>Months Worked</th>
-								<th>Monthly Rate ($)</th>
-								<th>Total Billed ($)</th>
+								<th>Train Name</th>
+								<th>Destination</th>
+								<th>Frequency (min)</th>
+								<th>Next Arrival</th>
+								<th>Minutes Away</th>
 							</tr>
 						</thead>
 					</table>
@@ -38,23 +37,23 @@
 		</div>
 
 		<div class="panel panel-primary">
-			<div class="panel-heading">Add Employee</div>
+			<div class="panel-heading">Add Train</div>
 			<div class="panel-body">
 				<div id="searchTerm">
-					<label for="search">Employee Name</label>
+					<label for="search">Train Name</label>
 					<input type="text" class="form-control" id="nameinput">
 				</div>
 				<div id="searchTerm">
-					<label for="search">Role</label>
-					<input type="text" class="form-control" id="roleinput">
+					<label for="search">Destination</label>
+					<input type="text" class="form-control" id="destinput">
 				</div>
 				<div id="searchTerm">
-					<label for="search">Start Date (DD/MM/YY - ex. 01/01/89)</label>
-					<input type="text" class="form-control" id="dateinput">
+					<label for="search">First Train Time(HH:mm - military time)</label>
+					<input type="text" class="form-control" id="timeinput">
 				</div>
 				<div id="searchTerm">
-					<label for="search">Monthly Rate</label>
-					<input type="text" class="form-control" id="rateinput">
+					<label for="search">Frequency (min - ex: 27)</label>
+					<input type="text" class="form-control" id="freqinput">
 				</div>
 				<br>
 				<div id="buttons">

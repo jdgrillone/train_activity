@@ -15,45 +15,46 @@ $("#submitbutton").on("click", function(event) {
 
 
 	var newName = $("#nameinput").val().trim();
-	var newRole = $("#roleinput").val().trim();
-	var newDate = $("#dateinput").val().trim();
-	var newRate = $("#rateinput").val().trim();
+	var newDest = $("#destinput").val().trim();
+	var newFreq = $("#freqinput").val().trim();
+	var newTime = $("#timeinput").val().trim();
 
 	console.log(newName);
-	console.log(newRole);
-	console.log(newDate);
-	console.log(newRate);
+	console.log(newDest);
+	console.log(newFreq);
+	console.log(newTime);
 
 	database.ref().push({
 		name: newName,
-		role: newRole,
-		date: newDate,
-		rate: newRate
+		destination: newDest,
+		frequency: newFreq,
+		time: newTime
 	});
 });
 
 database.ref().on("child_added", function(snapshot) {
 
       // Print the initial data to the console.
-      console.log(snapshot.val());
+      var tFrequency = snapshot.val().frequency;
+      var firstTime = snapshot.val().time;
+      var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+      var currentTime = moment();
+      var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+      var tRemainder = diffTime % tFrequency;
+      var tMinutesTillTrain = tFrequency - tRemainder;
+      var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      var nextTrainConverted = moment(nextTrain).format("HH:mm");
 
-      //Get current date
-      var then = moment((snapshot.val().date), 'DD/MM/YY');
-      var diff = moment().diff(then, 'month');
-      var amount = (diff*snapshot.val().rate);
 
-
-      // Change the HTML
       var newRow = $("<tr>");
 
       newRow.append("<td>" + snapshot.val().name + "</td>");
-      newRow.append("<td>" + snapshot.val().role + "</td>");
-      newRow.append("<td>" + snapshot.val().date + "</td>");
-      newRow.append("<td>" + diff + "</td>");
-      newRow.append("<td>$" + snapshot.val().rate + "</td>");
-      newRow.append("<td>$" + amount + "</td>");
+      newRow.append("<td>" + snapshot.val().destination + "</td>");
+      newRow.append("<td>" + snapshot.val().frequency + "</td>");
+      newRow.append("<td>" + nextTrainConverted + "</td>");
+      newRow.append("<td>" + tMinutesTillTrain + " minutes away.</td>");
 
-      $("#employee-table").append(newRow);
+      $("#train-table").append(newRow);
 
 
 
