@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Tracker</title>
+</head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1><strong> Employee Data Management</strong></h1>
+			<h3><strong> A Comprehensive Directory of Employee Billable Hours</strong></h3>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Current Employees</div>
+			<div class="panel-body">
+				<div class="table">
+					<table class="table" id="employee-table">
+						<thead>
+							<tr>
+								<th>Employee Name</th>
+								<th>Role</th>
+								<th>Start Date</th>
+								<th>Months Worked</th>
+								<th>Monthly Rate ($)</th>
+								<th>Total Billed ($)</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Add Employee</div>
+			<div class="panel-body">
+				<div id="searchTerm">
+					<label for="search">Employee Name</label>
+					<input type="text" class="form-control" id="nameinput">
+				</div>
+				<div id="searchTerm">
+					<label for="search">Role</label>
+					<input type="text" class="form-control" id="roleinput">
+				</div>
+				<div id="searchTerm">
+					<label for="search">Start Date (DD/MM/YY - ex. 01/01/89)</label>
+					<input type="text" class="form-control" id="dateinput">
+				</div>
+				<div id="searchTerm">
+					<label for="search">Monthly Rate</label>
+					<input type="text" class="form-control" id="rateinput">
+				</div>
+				<br>
+				<div id="buttons">
+					<button id="submitbutton" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Submit</button>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	<!-- LINK TO FIREBASE GOES HERE -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+	<!-- Link to Moment CDN -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+	<!-- jQuery CDN -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
